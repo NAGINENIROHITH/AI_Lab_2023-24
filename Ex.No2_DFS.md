@@ -12,7 +12,6 @@ To write a python program to implement Depth first Search.
 6. Call the dfs function by passing arguments visited, graph and starting node.
 7. Stop the program.
 ### Program:
-
 ```
 graph = {
     '5': ['3', '7'],
@@ -22,9 +21,7 @@ graph = {
     '4': ['8'],
     '8': []
 }
-
 visited = set()  # Set to keep track of visited nodes.
-
 def dfs(visited, graph, node):
     if node not in visited:
         print(node, end=" ")  # Print the node
@@ -32,17 +29,10 @@ def dfs(visited, graph, node):
         
         for neighbour in graph[node]:  # Recursively visit neighbors
             dfs(visited, graph, neighbour)
-
-# Driver Code
 print("Following is the Depth-First Search:")
 dfs(visited, graph, '5')
-
 ```
-
 ### Output:
-
 ![image](https://github.com/user-attachments/assets/9af26ac3-2c46-4af9-9032-3ba1b779a81c)
-
-
 ### Result:
 Thus the depth first search order was found sucessfully.
