@@ -1,6 +1,6 @@
 # Ex.No: 4   Implementation of Alpha Beta Pruning 
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE: 11/03/2025                                                                         
+### REGISTER NUMBER : 212222040105
 ### AIM: 
 Write a Alpha beta pruning algorithm to find the optimal value of MAX Player from the given graph.
 ### Steps:
@@ -15,19 +15,42 @@ Write a Alpha beta pruning algorithm to find the optimal value of MAX Player fro
 9.  Stop the program. 
 
 ### Program:
+```
+import math
 
+def alphabeta(depth, node_index, is_max, values, alpha, beta, max_depth):
+    if depth == max_depth:
+        return values[node_index]
+    
+    if is_max:
+        best = -1000
+        for i in range(2):
+            val = alphabeta(depth + 1, node_index * 2 + i, False, values, alpha, beta, max_depth)
+            best = max(best, val)
+            alpha = max(alpha, best)
+            if beta <= alpha:
+                break
+        return best
+    else:
+        best = 1000
+        for i in range(2):
+            val = alphabeta(depth + 1, node_index * 2 + i, True, values, alpha, beta, max_depth)
+            best = min(best, val)
+            beta = min(beta, best)
+            if beta <= alpha:
+                break
+        return best
 
+# Example leaf node values
+values = [3, 5, 2, 9, 12, 5, 23, 23]
+max_depth = 3
 
-
-
-
-
-
-
-
-
+# Find the optimal value for MAX player
+optimal_value = alphabeta(0, 0, True, values, -1000, 1000, max_depth)
+print("The optimal value for MAX player is:", optimal_value)
+```
 ### Output:
-
+![image](https://github.com/user-attachments/assets/7972a812-3556-45c1-86d1-eb00142f5acf)
 
 
 ### Result:
